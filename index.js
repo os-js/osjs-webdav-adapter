@@ -82,6 +82,15 @@ const transformReaddir = (mount, root) => response => {
       return {child, path, filename, isDirectory};
     })
     .filter(({filename}) => filename !== '')
+    .filter(({path}) => {
+      const pathWithoutPrefix = path.substr(prefix.length, path.length)
+      const count = pathWithoutPrefix
+        .split('/')
+        .filter(Boolean)
+        .length
+
+      return (count === 1)
+    })
     .map(({child, filename, isDirectory}) => {
       return {
         isDirectory,
