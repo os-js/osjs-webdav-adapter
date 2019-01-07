@@ -83,13 +83,13 @@ const transformReaddir = (mount, root) => response => {
     })
     .filter(({filename}) => filename !== '')
     .filter(({path}) => {
-      const pathWithoutPrefix = path.substr(prefix.length, path.length)
+      const pathWithoutPrefix = path.substr(prefix.length, path.length);
       const count = pathWithoutPrefix
         .split('/')
         .filter(Boolean)
-        .length
+        .length;
 
-      return (count === 1)
+      return (count === 1);
     })
     .map(({child, filename, isDirectory}) => {
       return {
