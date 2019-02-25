@@ -19,7 +19,6 @@ This is the WebDAV VFS (Server) Adapter for OS.js v3.
 const webdavAdapter = require('@osjs/webdav-adapter');
 
 osjs.register(VFSServiceProvider, {
-  depends: ['osjs/gapi'],
   args: {
     adapters: {
       webdav: webdavAdapter
