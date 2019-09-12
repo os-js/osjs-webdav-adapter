@@ -1,8 +1,13 @@
 {
   "name": "@osjs/webdav-adapter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "WebDAV VFS Adapter for OS.js v3",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint index.js"
