@@ -32,5 +32,15 @@
   "devDependencies": {
     "@osjs/eslint-config": "^1.0.0",
     "eslint": "^5.16.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "extends": "@osjs/eslint-config"
   }
 }
