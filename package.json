@@ -26,11 +26,11 @@
   },
   "homepage": "https://github.com/os-js/osjs-webdav-adapter#readme",
   "dependencies": {
-    "node-fetch": "^2.2.0",
-    "xmldom": "^0.1.27"
+    "node-fetch": "^2.6.0",
+    "xmldom": "^0.1.31"
   },
   "devDependencies": {
-    "@osjs/eslint-config": "^1.0.0",
+    "@osjs/eslint-config": "^1.0.2",
     "eslint": "^5.16.0"
   },
   "eslintConfig": {
