@@ -187,7 +187,7 @@ const adapter = core => {
     .then(() => true);
 
   const mkdir = vfs => (file, options, mount) => before(mount)
-    .then(() => request('KMCOL', davPath(mount, file)));
+    .then(() => request('MKCOL', davPath(mount, file)));
 
   const readdir = vfs => (root, options, mount) => before(mount)
     .then(() => request('PROPFIND', davPath(mount, root), {}, mount)
