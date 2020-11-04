@@ -1,6 +1,6 @@
 {
   "name": "@osjs/webdav-adapter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "WebDAV VFS Adapter for OS.js",
   "main": "index.js",
   "files": [
