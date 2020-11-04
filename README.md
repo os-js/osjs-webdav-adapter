@@ -43,7 +43,7 @@ Then create a mountpoint. Example using ownCloud:
     mountpoints: [{
       name: 'owncloud',
       label: 'ownCloud',
-      adapter: 'owncloud',
+      adapter: 'webdav',
       attributes: {
         connection: {
           uri: 'http://localhost:8002',
