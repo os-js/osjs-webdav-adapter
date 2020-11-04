@@ -146,7 +146,7 @@ const request = (method, url, options, mount, binary) => {
 };
 
 // Makes sure we can make a request with what we have
-const before = mount => {
+const before = (mount) => {
   return mount.attributes.connection &&
     mount.attributes.connection.uri
     ? Promise.resolve(true)
@@ -156,40 +156,40 @@ const before = mount => {
 // Our adapter
 const adapter = core => {
 
-  const readfile = vfs => (file, options, mount) => before(mount)
+  const readfile = ({ mount }) => (file, options) => before(mount)
     .then(() => request('GET', davPath(mount, file), {}, mount, true))
     .then(response => response.body);
 
-  const writefile = vfs => (file, binary, options, mount) => before(mount)
+  const writefile = ({ mount }) => (file, binary, options) => before(mount)
     .then(() => request('PUT', davPath(mount, file), {
       body: binary
     }, mount));
 
-  const unlink = vfs => (file, options, mount) => before(mount)
+  const unlink = ({ mount }) => (file, options) => before(mount)
     .then(() => request('DELETE', davPath(mount, file), {}, mount));
 
-  const copy = vfs => (src, dest, options, mount) => before(mount)
+  const copy = ({ mount }) => (src, dest, options) => before(mount)
     .then(() => request('COPY', davPath(mount, src), {
       headers: {
         Destination: davPath(mount, dest)
       }
     }, mount));
 
-  const rename = vfs => (src, dest, options, mount) => before(mount)
+  const rename = ({ mount }) => (src, dest, options) => before(mount)
     .then(() => request('MOVE', davPath(mount, src), {
       headers: {
         Destination: davPath(mount, dest)
       }
     }, mount));
 
-  const exists = vfs => (file, options, mount) => before(mount)
+  const exists = ({ mount }) => (file, options) => before(mount)
     .then(() => request('PROPFIND', davPath(mount, file), {}, mount))
     .then(() => true);
 
-  const mkdir = vfs => (file, options, mount) => before(mount)
+  const mkdir = ({ mount }) => (file, options) => before(mount)
     .then(() => request('MKCOL', davPath(mount, file)));
 
-  const readdir = vfs => (root, options, mount) => before(mount)
+  const readdir = ({ mount }) => (root, options) => before(mount)
     .then(() => request('PROPFIND', davPath(mount, root), {}, mount)
       .then(transformReaddir(mount, root)));
 
