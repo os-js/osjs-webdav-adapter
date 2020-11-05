@@ -41,7 +41,7 @@ const withoutPrefix = path => path
 // Gets a WebDAV URL
 const davPath = (mount, path) => {
   const {uri} = mount.attributes.connection;
-  const prefix = mount.attributes.connection.prefix || '/webdav';
+  const prefix = (mount.attributes.connection.prefix || '/webdav').replace(/\/?$/, '');
   const suffix = withoutPrefix(path);
   const params = [];
 
@@ -69,7 +69,7 @@ const queryFilePath = (child, ns) => decodeURIComponent(queryField(child, ns, 'h
 const transformReaddir = (mount, root) => response => {
   const ns = mount.attributes.connection.ns || 'DAV:';
   const dir = root.split(':').slice(-1)[0];
-  const prefix = (mount.attributes.connection.prefix || '/webdav') + dir;
+  const prefix = (mount.attributes.connection.prefix || '/webdav').replace(/\/?$/, '') + dir;
   const childNodes = response.getElementsByTagNameNS(ns, 'response');
 
   return Array.from(childNodes)
